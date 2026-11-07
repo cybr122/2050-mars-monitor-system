@@ -2,10 +2,12 @@ import time
 
 # Authorized Crew Database (Authentication)
 AUTHORIZED_CREW = {
-    "MARS-001": "Commander Sarah Miller",
-    "MARS-002": "Pilot Alex Chen",
-    "MARS-003": "Mission Specialist Elena Rostova",
-    "MARS-007": "Captain Sarah Jones",
+    "MARS-001": "Commander Bahargul",
+    "MARS-002": "Pilot Adam",
+    "MARS-003": "Pilot Akmal",
+    "MARS-004": "Mission Specialist Eric",
+    "MARS-005": "Mission Specialist Hakimi",
+    "MARS-006": "Captain Aqib",
 }
 
 # : Base Resource Inventory (Initial Stocks)
