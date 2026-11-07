@@ -20,7 +20,10 @@ current_inventory = {
 
 # : Immutable Safety & Technical Thresholds
 O2_SAFETY_RANGE = (19.5, 23.5)  # Safe habitat O2 percentage range (%)
-MOXIE_TEMP_RANGE = (750.0, 850.0)  # Safe MOXIE reactor temperature range (°C)
+MOXIE_TEMP_RANGE = {  # Safe MOXIE reactor temperature range (°C)
+    "minimum": 750.0,
+    "maximum": 850.0,
+}
 SABATIER_RATIO_TARGET = 4.0  # Ideal H2:CO2 stoichiometric ratio
 SABATIER_RATIO_TOLERANCE = 0.4  # Acceptable ratio tolerance (+/-)
 
@@ -107,12 +110,12 @@ def main():
                     )
                     temp_input = float(
                         input(
-                            f"Enter reactor operation temperature (°C) [Safe Range: {MOXIE_TEMP_RANGE[0]}-{MOXIE_TEMP_RANGE[1]}°C]: "
+                            f"Enter reactor operation temperature (°C) [Safe Range: {MOXIE_TEMP_RANGE['minimum']}-{MOXIE_TEMP_RANGE['maximum']}°C]: "
                         )
                     )
 
-                    if not (MOXIE_TEMP_RANGE[0] <= temp_input <= MOXIE_TEMP_RANGE[1]):
-                        msg = f"FAILED: Reactor temperature ({temp_input})°C outside safe range ({MOXIE_TEMP_RANGE[0]}-{MOXIE_TEMP_RANGE[1]}°C)!"
+                    if not (MOXIE_TEMP_RANGE['minimum'] <= temp_input <= MOXIE_TEMP_RANGE['maximum']):
+                        msg = f"FAILED: Reactor temperature ({temp_input})°C outside safe range ({MOXIE_TEMP_RANGE['minimum']}-{MOXIE_TEMP_RANGE['maximum']}°C)!"
                         print(f"⚠️ {msg}")
                         system_logs.append(
                             f"[{time.strftime('%H:%M:%S')}] MOXIE Error: {msg}"
